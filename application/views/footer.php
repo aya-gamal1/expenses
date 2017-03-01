@@ -14,5 +14,21 @@
 <!-- form validation -->
 <script src="<?php echo base_url("upload/js/validator/validator.js");?>"></script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

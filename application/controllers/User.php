@@ -9,6 +9,44 @@ class User extends CI_Controller {
     }
     public function login()
     {
+        $config = array(
+            array(
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'password',
+                'label' => 'Password',
+                'rules' => 'required'
+            ),
+        );
+
+        $this->form_validation->set_rules($config);
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            echo validation_errors();
+        }
+        else
+        {
+            $data['users']=$this->user->login();
+
+            if( count($data['users'] )>0) {
+
+                $data = array(
+                    'firstname' => $data['users'][0]['FirstName'],
+                    'lastname' => $data['users'][0]['LastName'],
+                    'username' => $data['users'][0]['UserName'],
+                    'email' => $data['users'][0]['Email'],
+                    'id' => $data['users'][0]['Id'],
+                    'loggedIn' => true,
+                );
+                $this->session->set_userdata($data);
+                echo 1;
+            }
+
+        }
 
     }
     public function register(){

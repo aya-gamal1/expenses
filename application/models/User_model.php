@@ -8,9 +8,9 @@ class User_model extends CI_Model {
     }
 
     public function login(){
-        $email=$_POST['email'];
-        $password=md5($_POST['password']);
-        $query = $this->db->get_where('users', array('email' => $email,'password'=>$password), 1);
+        $email=$this->input->post('email');
+        $password=sha1($this->input->post('password'));
+        $query = $this->db->get_where('users', array('Email' => $email,'Password'=>$password), 1);
         return $query->result_array();
     }
 
@@ -36,14 +36,7 @@ class User_model extends CI_Model {
 
 
     public function update(){
-        $data = array(
-            'firstname' => $_POST['firstname'],
-            'lastname' => $_POST['lastname'],
 
-        );
-        echo $_POST['firstname'];
-        $this->db->where('id', $_POST['id']);
-        $this->db->update('users', $data);
     }
 
 }
