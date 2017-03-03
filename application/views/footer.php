@@ -12,7 +12,6 @@
 <script src="<?php echo base_url("upload/js/pace/pace.min.js");?>"></script>
 <script src="<?php echo base_url("upload/js/custom.js");?>"></script>
 <!-- form validation -->
-<script src="<?php echo base_url("upload/js/validator/validator.js");?>"></script>
 
 
 
