@@ -50,7 +50,7 @@ class User extends CI_Controller {
 
     }
     public function register(){
-
+var_dump($this->input->post('birthdate'));
         $config = array(
             array(
                 'field' => 'firstname',
@@ -83,12 +83,12 @@ class User extends CI_Controller {
                 'label' => 'password confirmation',
                 'rules' => 'required|matches[password]'
             ),
-//            array(
-//
-//                'field' => 'birthdate',
-//                'label' => 'BirthDate',
-//                'rules' => 'required'
-//            ),
+            array(
+
+                'field' => 'birthdate',
+                'label' => 'BirthDate',
+                'rules' => 'required'
+            ),
             array(
                 'field' => 'gender',
                 'label' => 'Gender',
@@ -121,8 +121,9 @@ class User extends CI_Controller {
                     'loggedIn' => true,
                 );
                 $this->session->set_userdata($data);
+                echo 1;
             }
-            echo 1;
+
         }
 
 

@@ -24,7 +24,7 @@ class User_model extends CI_Model {
         $this->UserName     = $this->input->post('username');
         $this->Email    = $this->input->post('email');
         $this->Gender  = $this->input->post('gender');
-//        $this->BirthDate     = $this->input->post('birthdate');
+        $this->BirthDate     = $this->input->post('birthdate');
         $this->Password     = sha1($this->input->post('password'));
         $this->JobId     = $this->input->post('JobId');
 

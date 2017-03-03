@@ -66,7 +66,19 @@
                         <input type="radio" class="flat" name="gender" id="genderF" value="F" />
                     </p>
                     </div>
-
+                    <div>
+                        <fieldset>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="col-md-12 xdisplay_inputx form-group has-feedback">
+                                        <input type="text" name="birthdate" class="form-control has-feedback-left" id="single_cal4" placeholder="BirthDate" aria-describedby="inputSuccess2Status4">
+                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <span id="inputSuccess2Status4" class="sr-only">(success)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
                     <div >
 
 
@@ -93,11 +105,22 @@
     </div>
 </div>
 
-
+<script type="text/javascript" src="<?php echo base_url("upload/js/moment/moment.min.js")?>"></script>
+<script type="text/javascript" src="<?php echo base_url("upload/js/datepicker/daterangepicker.js") ?>"></script>
 
 
 <script>
 
+
+    $(document).ready(function() {
+
+    $('#single_cal4').daterangepicker({
+        singleDatePicker: true,
+        calender_style: "picker_2",
+        format: 'YYYY-MM-DD'
+    }, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+    });
 
     $("#registerButton").click(function(e) {
         e.preventDefault();
@@ -148,7 +171,7 @@
 
 
 
-
+    });
 
 </script>
 
