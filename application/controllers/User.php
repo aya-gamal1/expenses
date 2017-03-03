@@ -50,7 +50,6 @@ class User extends CI_Controller {
 
     }
     public function register(){
-var_dump($this->input->post('birthdate'));
         $config = array(
             array(
                 'field' => 'firstname',

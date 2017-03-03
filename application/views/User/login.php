@@ -111,69 +111,14 @@
 
 <script>
 
-
-    $(document).ready(function() {
-
-    $('#single_cal4').daterangepicker({
-        singleDatePicker: true,
-        calender_style: "picker_2",
-        format: 'YYYY-MM-DD'
-    }, function(start, end, label) {
-        console.log(start.toISOString(), end.toISOString(), label);
-    });
-
-    $("#registerButton").click(function(e) {
-        e.preventDefault();
-            data = $("#create_account").serialize();
-            $.ajax({
-                url: "<?php echo site_url('user/register')?>",
-                type: 'post',
-                data: data,
-                success: function (data, textStatus, jQxhr) {
-
-                    if (data == 1) {
-
-                        window.location = "<?php echo site_url('welcome/welcome_message')?>";
-                    } else {
-                        $("#error").html(data);
-                    }
-                }
-                ,
-                error: function (jqXhr, textStatus, errorThrown) {
-                    console.log(jqXhr, textStatus);
-                }
-            });
-    });
+    var registerUrl="<?php echo site_url('user/register')?>";
+    var welcomeUrl="<?php echo site_url('welcome/welcome_message')?>";
+    var loginUrl="<?php echo site_url('user/login')?>";
 
 
-    $("#login_form").submit(function(e) {
-        e.preventDefault();
-        data = $("#login_form").serialize();
-        $.ajax({
-            url: "<?php echo site_url('user/login')?>",
-            type: 'post',
-            data: data,
-            success: function (data, textStatus, jQxhr) {
-
-                if (data == 1) {
-
-                    window.location = "<?php echo site_url('welcome/welcome_message')?>";
-                } else {
-                    $("#error").html(data);
-                }
-            }
-            ,
-            error: function (jqXhr, textStatus, errorThrown) {
-                console.log(jqXhr, textStatus);
-            }
-        });
-    });
-
-
-
-    });
 
 </script>
+<script src="<?php echo base_url("upload/Application/User/user.js");?>"></script>
 
 
 
