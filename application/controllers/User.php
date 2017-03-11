@@ -44,6 +44,8 @@ class User extends CI_Controller {
                 );
                 $this->session->set_userdata($data);
                 echo 1;
+            }else{
+                echo "Error login";
             }
 
         }
@@ -128,9 +130,15 @@ class User extends CI_Controller {
 
     }
     public function get_profile(){
+        $this->load->view('main',array("view_name"=>"User/profile","page_title"=>"Profile Page"));
 
     }
     public function update_profile(){
+        $this->load->view('main',array("view_name"=>"User/edit_profile","page_title"=>"Edit Profile"));
 
+    }
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('welcome');
     }
 }

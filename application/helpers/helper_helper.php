@@ -21,3 +21,11 @@ function DrawDropDownMenu($TableName,$IdField,$TextField,$FirstOption){
 
 
 }
+
+/**
+ * get logged in username
+ */
+function username(){
+    $ci =& get_instance();
+    return $ci->session->userdata('username');
+}

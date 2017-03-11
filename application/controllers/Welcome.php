@@ -25,11 +25,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('header');
-
-		$this->load->view('User/login');
-
-		$this->load->view("footer");
+		$this->load->view('main',array("view_name"=>"User/login","page_title"=>"Login Page"));
 	}
 
 	public function welcome_message()

@@ -40,11 +40,11 @@ $(document).ready(function() {
             type: 'post',
             data: data,
             success: function (data, textStatus, jQxhr) {
-
                 if (data == 1) {
 
                     window.location = welcomeUrl;
                 } else {
+                    alert(data);
                     $("#error").html(data);
                 }
             }

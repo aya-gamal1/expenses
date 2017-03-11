@@ -112,7 +112,7 @@
 <script>
 
     var registerUrl="<?php echo site_url('user/register')?>";
-    var welcomeUrl="<?php echo site_url('welcome/welcome_message')?>";
+    var welcomeUrl="<?php echo site_url('home')?>";
     var loginUrl="<?php echo site_url('user/login')?>";
 
 

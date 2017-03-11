@@ -1,6 +1,6 @@
 
 <!-- page content -->
 <div class="right_col" role="main">
-<h1>Profile page</h1>
+    <h1>Settings</h1>
 
 </div>

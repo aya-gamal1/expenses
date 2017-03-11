@@ -15,11 +15,7 @@ class OutcomeReport extends CI_Controller
 
     public function create()
     {
-        $this->load->view('header');
-
-        $this->load->view('Report/createOutcome');
-
-        $this->load->view("footer");
+        $this->load->view('main',array("view_name"=>"Report/createOutcome","page_title"=>"Create Outcome"));
 
     }
 
@@ -59,6 +55,16 @@ class OutcomeReport extends CI_Controller
 
 
         }
+    }
+
+
+    public function get_outcome_charts(){
+        $this->load->view('main',array("view_name"=>"Report/outcome_charts","page_title"=>"Outcome(charts)"));
+
+    }
+    public function get_outcome_tables(){
+        $this->load->view('main',array("view_name"=>"Report/outcome_tables","page_title"=>"Outcome(tables)"));
+
     }
 
 }

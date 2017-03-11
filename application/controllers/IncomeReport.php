@@ -15,11 +15,8 @@ class IncomeReport extends CI_Controller
 
     public function create()
     {
-        $this->load->view('header');
+        $this->load->view('main',array("view_name"=>"Report/createIncome","page_title"=>"Create Income"));
 
-        $this->load->view('Report/createIncome');
-
-        $this->load->view("footer");
 
     }
 
@@ -60,5 +57,16 @@ class IncomeReport extends CI_Controller
 
         }
     }
+
+    public function get_income_charts(){
+        $this->load->view('main',array("view_name"=>"Report/income_charts","page_title"=>"Income(charts)"));
+
+    }
+    public function get_income_tables(){
+        $this->load->view('main',array("view_name"=>"Report/income_tables","page_title"=>"Income(tables)"));
+
+    }
+
+
 
 }

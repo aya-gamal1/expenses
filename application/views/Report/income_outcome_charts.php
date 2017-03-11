@@ -1,6 +1,7 @@
 
 <!-- page content -->
 <div class="right_col" role="main">
-<h1>Profile page</h1>
+    <h1>income outcome charts
+    </h1>
 
 </div>
