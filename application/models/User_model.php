@@ -16,7 +16,6 @@ class User_model extends CI_Model {
 
 
 
-
     public function insert()
     {
         $this->FirstName    = $this->input->post('firstname');
@@ -33,7 +32,12 @@ class User_model extends CI_Model {
         return $this;
     }
 
-
+    public function get_current_user(){
+        $this->db->from('users');
+        $this->db->where('users.Id=' , $this->session->userdata("id"));
+        $this->db->join('jobs', 'users.JobId = jobs.Id');
+        return $this->db->get()->result_array();
+    }
 
     public function update(){
 

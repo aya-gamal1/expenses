@@ -130,7 +130,11 @@ class User extends CI_Controller {
 
     }
     public function get_profile(){
-        $this->load->view('main',array("view_name"=>"User/profile","page_title"=>"Profile Page"));
+
+        $data['users']=$this->user->get_current_user();
+        $data["page_title"]="Profile Page";
+        $data["view_name"]="User/profile";
+        $this->load->view('main',$data);
 
     }
     public function update_profile(){
