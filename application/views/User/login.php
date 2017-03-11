@@ -1,5 +1,6 @@
 
 
+<link href="<?php echo base_url("upload/css/select/select2.min.css")?>" rel="stylesheet">
 
 <body style="background:#F7F7F7;">
 
@@ -82,7 +83,7 @@
                     <div >
 
 
-                        <select id="job" name="JobId" class="form-control" >
+                        <select id="job" name="JobId" class="select2_single form-control" >
                             <?php echo   DrawDropDownMenu('jobs','Id','Name',"choose your job")?>
                         </select>
 
@@ -107,10 +108,15 @@
 
 <script type="text/javascript" src="<?php echo base_url("upload/js/moment/moment.min.js")?>"></script>
 <script type="text/javascript" src="<?php echo base_url("upload/js/datepicker/daterangepicker.js") ?>"></script>
+<script src="<?php echo base_url("upload/js/select/select2.full.js")?>"></script>
 
 
 <script>
+    $(".select2_single").select2({
+        minimumResultsForSearch: Infinity,
 
+
+    });
     var registerUrl="<?php echo site_url('user/register')?>";
     var welcomeUrl="<?php echo site_url('home')?>";
     var loginUrl="<?php echo site_url('user/login')?>";

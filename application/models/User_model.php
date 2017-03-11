@@ -40,7 +40,18 @@ class User_model extends CI_Model {
     }
 
     public function update(){
+        $this->FirstName    = $this->input->post('firstname');
+        $this->LastName  = $this->input->post('lastname');
+        $this->Email    = $this->input->post('email');
+        $this->Gender  = $this->input->post('gender');
+        $this->BirthDate     = $this->input->post('birthdate');
+        $this->Password     = sha1($this->input->post('password'));
+        $this->JobId     = $this->input->post('JobId');
 
+        $this->db->where('id', $this->session->userdata('id'));
+        $this->db->update('users', $this);
+
+        return $this;
     }
 
 }

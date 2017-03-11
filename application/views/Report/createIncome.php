@@ -1,12 +1,8 @@
 
+<link href="<?php echo base_url("upload/css/select/select2.min.css")?>" rel="stylesheet">
 
 
-<body class="nav-md">
 
-<div class="body">
-
-
-    <div class="main_container">
 
 
 
@@ -41,7 +37,7 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">as <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="category" name="categoryId" class="form-control" required="required">
+                                            <select id="category" name="categoryId" class="select2_single form-control" required="required">
                                                 <?php echo   DrawDropDownMenu('income_categories','Id','Name',"choose category")?>
                                             </select>
                                         </div>
@@ -103,10 +99,17 @@
 
 <script type="text/javascript" src="<?php echo base_url("upload/js/moment/moment.min.js")?>"></script>
 <script type="text/javascript" src="<?php echo base_url("upload/js/datepicker/daterangepicker.js") ?>"></script>
+<script src="<?php echo base_url("upload/js/select/select2.full.js")?>"></script>
 
 <script src="<?php echo base_url("upload/js/validator/validator.js");?>"></script>
 
 <script>
+    $(".select2_single").select2({
+        minimumResultsForSearch: Infinity,
+
+
+    });
+
         $('#single_cal4').daterangepicker({
             singleDatePicker: true,
             calender_style: "picker_2",
@@ -115,8 +118,8 @@
             console.log(start.toISOString(), end.toISOString(), label);
         });
 
-        var createIncomeUrl = "<?php echo site_url("IncomeReport/store")?>";
-        var welcomeUrl = "<?php echo site_url('welcome/welcome_message')?>";
+        var saveURL = "<?php echo site_url("IncomeReport/store")?>";
+        var redirectURL = "<?php echo site_url('welcome/welcome_message')?>";
 //        var data = $("#income").serialize();
 //        console.log(data);
 

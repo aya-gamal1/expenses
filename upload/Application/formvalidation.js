@@ -26,7 +26,7 @@ $(document).ready(function() {
         }
 
         if (submit) {
-            formAjax(createIncomeUrl, welcomeUrl)
+            formAjax(saveURL, redirectURL)
         }
         return false;
     });
