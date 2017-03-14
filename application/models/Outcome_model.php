@@ -2,7 +2,7 @@
 class Outcome_model extends CI_Model {
 
 
-    var $table = 'outcome';
+    private $table = 'outcome';
     var $column_order = array(null,'Date','MoneyAmount','Name'); //set column field database for datatable orderable
     var $column_search = array('income.Id','Date','MoneyAmount','Name'); //set column field database for datatable searchable
     var $order = array('outcome.id' => 'asc'); // default order

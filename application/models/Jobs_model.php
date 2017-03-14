@@ -1,28 +1,21 @@
 <?php
-class Income_model extends CI_Model {
+class Jobs_model extends CI_Model {
 
 
-    private $table = 'income';
-    var $column_order = array(null,'Date','MoneyAmount','Name'); //set column field database for datatable orderable
-    var $column_search = array('income.Id','Date','MoneyAmount','Name'); //set column field database for datatable searchable
-    var $order = array('income.id' => 'asc'); // default order
+    private  $table = 'jobs';
+    var $column_order = array(null,'Name'); //set column field database for datatable orderable
+    var $column_search = array('Id','Name'); //set column field database for datatable searchable
+    var $order = array('jobs.id' => 'asc'); // default order
 
     public function __construct()
     {
         parent::__construct();
 
     }
-
     public function insert()
     {
-        $this->MoneyAmount    = $this->input->post('moneyAmount');
-        $this->categoryId  = $this->input->post('categoryId');
-        $this->Date     = $this->input->post('date');
-        $this->Description    = $this->input->post('description');
-        $this->UserId     = $this->session->userdata('id');
-
-        return $this->db->insert('income', $this);
-
+        $this->Name    = $this->input->post('name');
+       echo  $this->db->insert('jobs', $this);
 
     }
 
@@ -30,12 +23,7 @@ class Income_model extends CI_Model {
     {
 
         $this->db->from($this->table);
-        $this->db->where('income.UserId=' , $this->session->userdata("id"));
-        $this->db->join('income_categories', 'income.CategoryId = income_categories.Id');
-        if ($this->input->post('from') && $this->input->post('to')){
-            $this->db->where('Date >=', $this->input->post('from'));
-            $this->db->where('Date <=', $this->input->post('to'));
-        }
+
 
         $i = 0;
 
@@ -71,7 +59,6 @@ class Income_model extends CI_Model {
         }
     }
 
-
     function get_datatables()
     {
         $this->_get_datatables_query();
@@ -93,19 +80,5 @@ class Income_model extends CI_Model {
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
-
-
-
-
-
-    public function get_current_user_income(){
-        $this->db->from('income');
-        $this->db->select('Date,MoneyAmount,Name');
-        $this->db->where('income.UserId=' , $this->session->userdata("id"));
-        $this->db->join('income_categories', 'income.CategoryId = income_categories.Id');
-        return $this->db->get()->result_array();
-    }
-
-
 
 }
