@@ -96,7 +96,7 @@
                             </li>
                             <li><a href="<?php echo site_url("IncomeReport/get_income_charts")?>">Income Report(charts)</a>
                             </li>
-                            <li><a href="<?php echo site_url("IncomeReport/get_income_tables")?>">Income Report(tables)</a>
+                            <li><a href="<?php echo site_url("IncomeReport/open_income_tables")?>">Income Report(tables)</a>
                             </li>
 
 
@@ -109,7 +109,7 @@
                             </li>
                             <li><a href="<?php echo site_url("OutcomeReport/get_outcome_charts")?>">Outcome Report(charts)</a>
                             </li>
-                            <li><a href="<?php echo site_url("OutcomeReport/get_outcome_tables")?>">Outcome Report(tables)</a>
+                            <li><a href="<?php echo site_url("OutcomeReport/open_outcome_tables")?>">Outcome Report(tables)</a>
                             </li>
                         </ul>
                     </li>

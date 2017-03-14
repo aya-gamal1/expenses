@@ -20,10 +20,11 @@
                     <div class="x_content">
 
 
+
                         <div class="row">
                             <form class="form-horizontal form-label-left" novalidate>
-                                <div id="error"></div>
 
+                                <div id="error" class="alert alert-danger avater-alert" style="display:none;" ></div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Change Photo <span class="required">*</span>
                                     </label>
@@ -146,7 +147,8 @@
 <script type="text/javascript" src="<?php echo base_url("upload/js/datepicker/daterangepicker.js") ?>"></script>
 <script src="<?php echo base_url("upload/js/select/select2.full.js")?>"></script>
 <script src="<?php echo base_url("upload/js/validator/validator.js");?>"></script>
-
+<script src="<?php echo base_url("upload/js/cropping/cropper.min.js")?>"></script>
+<script src="<?php echo base_url("upload/js/cropping/main.js")?>"></script>
 <script>
     $(".select2_single").select2({
         minimumResultsForSearch: Infinity,

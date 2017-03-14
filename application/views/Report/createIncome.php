@@ -23,7 +23,7 @@
 
 
                                     <span class="section">Income Form</span>
-                                    <div class="error" id="error"></div>
+                                    <div id="error" class="alert alert-danger avater-alert" style="display:none;" ></div>
 
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="money">I Get <span class="required">*</span>

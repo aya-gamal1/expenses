@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
 
 	public function welcome_message()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('main',array('view_name'=>'User/demo'));
 
 
 	}

@@ -42,7 +42,10 @@ $(document).ready(function() {
 
                     window.location = RedirectUrl;
                 } else {
+                    $("#error").show();
+
                     $("#error").html(data);
+
                 }
             }
             ,

@@ -11,13 +11,16 @@
     <div id="wrapper">
         <div id="login" class="animate form">
             <section class="login_content">
-                <form id="login_form">
+                <form id="login_form" novalidate>
                     <h1>Login Form</h1>
+                    <div id="error1" class="alert alert-danger avater-alert" style="display:none;" ></div>
+
                     <div>
-                        <input type="text" class="form-control" name="email" placeholder="Email" required="" />
+
+                        <input type="text" class="form-control" name="email" placeholder="Email" required="required" />
                     </div>
                     <div>
-                        <input type="password" class="form-control" name="password" placeholder="Password" required="" />
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="required" />
                     </div>
                     <div>
                         <button class="btn btn-default submit" >Log in</button>
@@ -37,9 +40,9 @@
         </div>
         <div id="register" class="animate form">
             <section class="login_content">
-                <form id="create_account" method="POST">
+                <form id="create_account" method="POST" enctype="multipart/form-data" novalidate>
                     <h1>Create Account</h1>
-                    <div class="error" id="error"></div>
+                    <div id="error" class="alert alert-danger avater-alert" style="display:none;" ></div>
                     <div>
                         <input type="text" class="form-control" name="firstname" placeholder="First name"  />
                     </div>
@@ -57,6 +60,10 @@
                     </div>
                     <div>
                         <input type="password" class="form-control" data-validate-linked="password" name="passwordConfirmation" placeholder="Password Confirmation" />
+                    </div>
+                    <div>
+                        <label>Choose Photo</label>
+                        <input type="file" id="picture" name="picture"  />
                     </div>
                     <div>
                     <label>Gender *:</label>
@@ -109,6 +116,7 @@
 <script type="text/javascript" src="<?php echo base_url("upload/js/moment/moment.min.js")?>"></script>
 <script type="text/javascript" src="<?php echo base_url("upload/js/datepicker/daterangepicker.js") ?>"></script>
 <script src="<?php echo base_url("upload/js/select/select2.full.js")?>"></script>
+<script src="<?php echo base_url("upload/js/validator/validator.js");?>"></script>
 
 
 <script>

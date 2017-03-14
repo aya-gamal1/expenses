@@ -28,6 +28,7 @@ class User_model extends CI_Model {
         $this->JobId     = $this->input->post('JobId');
 
         $this->db->insert('users', $this);
+        $this->Id = $this->db->insert_id();
 
         return $this;
     }

@@ -45,13 +45,18 @@ class User extends CI_Controller {
                 $this->session->set_userdata($data);
                 echo 1;
             }else{
-                echo "Error login";
+                echo "email or password is not correct";
             }
 
         }
 
     }
     public function register(){
+
+
+
+
+
         $config = array(
             array(
                 'field' => 'firstname',
@@ -118,7 +123,7 @@ class User extends CI_Controller {
                     'lastname' => $data['users']->LastName,
                     'username' => $data['users']->UserName,
                     'email' => $data['users']->Email,
-                    //'id' => $data['users']->Id,
+                    'id' => $data['users']->Id,
                     'loggedIn' => true,
                 );
                 $this->session->set_userdata($data);
@@ -146,6 +151,12 @@ class User extends CI_Controller {
     }
     public function save_update_profile()
     {
+        $original_value = $this->session->userdata("email");
+        if($this->input->post('email') != $original_value) {
+            $is_unique =  '|is_unique[users.EMAIL]';
+        } else {
+            $is_unique =  '';
+        }
         $config = array(
             array(
                 'field' => 'firstname',
@@ -161,7 +172,7 @@ class User extends CI_Controller {
             array(
                 'field' => 'email',
                 'label' => 'Email',
-                'rules' => 'required|valid_email|min_length[12]|max_length[50]'
+                'rules' => 'required|valid_email|min_length[12]|max_length[50]xss_clean'.$is_unique
             ),
             array(
                 'field' => 'password',

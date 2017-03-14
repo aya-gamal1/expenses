@@ -62,9 +62,33 @@ class OutcomeReport extends CI_Controller
         $this->load->view('main',array("view_name"=>"Report/outcome_charts","page_title"=>"Outcome(charts)"));
 
     }
-    public function get_outcome_tables(){
+    public function open_outcome_tables(){
         $this->load->view('main',array("view_name"=>"Report/outcome_tables","page_title"=>"Outcome(tables)"));
 
     }
+    public function get_outcome_tables(){
+
+        $list = $this->outcome->get_datatables();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $customers) {
+            $no++;
+            $row = array();
+            $row[] = $customers->Id;
+            $row[] = $customers->Date;
+            $row[] = $customers->MoneyAmount;
+            $row[] = $customers->Name;
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->outcome->count_all(),
+            "recordsFiltered" => $this->outcome->count_filtered(),
+            "data" => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+    }
+
 
 }

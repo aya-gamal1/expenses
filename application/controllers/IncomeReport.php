@@ -62,10 +62,46 @@ class IncomeReport extends CI_Controller
         $this->load->view('main',array("view_name"=>"Report/income_charts","page_title"=>"Income(charts)"));
 
     }
-    public function get_income_tables(){
+    public function open_income_tables(){
         $this->load->view('main',array("view_name"=>"Report/income_tables","page_title"=>"Income(tables)"));
 
     }
+    public function get_income_tables(){
+//       $data= $this->income->get_current_user_income();
+//
+//        $output = array(
+//            "draw" => 1,
+//            "recordsTotal" => count($data),
+//            "recordsFiltered" => count($data),
+//            "data" => $data,
+//        );
+//        echo json_encode($output);
+        $list = $this->income->get_datatables();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $customers) {
+            $no++;
+            $row = array();
+
+            $row[] = $customers->Id;
+            $row[] = $customers->Date;
+            $row[] = $customers->MoneyAmount;
+            $row[] = $customers->Name;
+
+
+            $data[] = $row;
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->income->count_all(),
+            "recordsFiltered" => $this->income->count_filtered(),
+            "data" => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+    }
+
 
 
 
