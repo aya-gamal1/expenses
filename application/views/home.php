@@ -4,7 +4,7 @@
 
             <h3>Income</h3>
 <div class="row">
-
+<?php if (count($incomes)){ ?>
     <?php foreach($incomes as $income){ ?>
     <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="panel panel-success">
@@ -23,9 +23,13 @@
             </div>
     </div>
     <?php  }?>
+    <?php }else { ?>
+      you don`t have any income yet
+    <?php }?>
     </div>
             <h3>Outcome</h3>
             <div class="row">
+                <?php if (count($outcomes)){ ?>
     <?php foreach($outcomes as $outcome){ ?>
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="panel panel-danger">
@@ -45,9 +49,10 @@
         </div>
     <?php  }?>
 
+<?php }else{ ?>
+                    you don`t have any outcome yet
 
-
-
+                <?php }?>
 </div>
 
 

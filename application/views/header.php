@@ -24,6 +24,8 @@
 
 
     <script src="<?php echo base_url("upload/js/jquery.min.js");?>"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+
     <script src="<?php echo base_url("upload/js/nprogress.js")?>"></script>
     <!--[if lt IE 9]>
     <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -61,7 +63,7 @@
         <!-- menu prile quick info -->
         <div class="profile">
             <div class="profile_pic">
-                <img src="<?php echo base_url ("upload/images/img.jpg")?>" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url ("upload/images/users/".$this->session->userdata('picture'))?>" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
@@ -144,7 +146,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo base_url("upload/images/img.jpg")?>" alt=""><?php echo $this->session->userdata('username');?>
+                                <img src="<?php echo base_url("upload/images/users/".$this->session->userdata('picture'))?>" alt=""><?php echo $this->session->userdata('username');?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">

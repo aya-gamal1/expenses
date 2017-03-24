@@ -40,6 +40,7 @@ class User extends CI_Controller {
                     'username' => $data['users'][0]['UserName'],
                     'email' => $data['users'][0]['Email'],
                     'id' => $data['users'][0]['Id'],
+                    'picture' => $data['users'][0]['Picture'],
                     'loggedIn' => true,
                 );
                 $this->session->set_userdata($data);
@@ -53,8 +54,15 @@ class User extends CI_Controller {
     }
     public function register(){
 
+        $con['upload_path']          = FCPATH.'upload/images/users';
+        $con['allowed_types']        = 'gif|jpg|png';
+        $con['max_size']             = 100;
+//        $con['max_width']            = 1024;
+//        $con['max_height']           = 768;
+        $con['file_name'] = sha1($this->input->post('username').time());
 
 
+        $this->upload->initialize($con);
 
 
         $config = array(
@@ -114,21 +122,32 @@ class User extends CI_Controller {
             echo validation_errors();
         } else {
 
-            $data['users']=$this->user->insert();
+            if ( ! $this->upload->do_upload('picture'))
+            {
+                echo $this->upload->display_errors();
 
-            if( count($data['users'] )>0) {
-
-                $data = array(
-                    'firstname' => $data['users']->FirstName,
-                    'lastname' => $data['users']->LastName,
-                    'username' => $data['users']->UserName,
-                    'email' => $data['users']->Email,
-                    'id' => $data['users']->Id,
-                    'loggedIn' => true,
-                );
-                $this->session->set_userdata($data);
-                echo 1;
             }
+            else
+            {
+                $data['users']=$this->user->insert();
+
+                if( count($data['users'] )>0) {
+
+                    $data = array(
+                        'firstname' => $data['users']->FirstName,
+                        'lastname' => $data['users']->LastName,
+                        'username' => $data['users']->UserName,
+                        'email' => $data['users']->Email,
+                        'id' => $data['users']->Id,
+                        'picture' => $data['users']->Picture,
+                        'loggedIn' => true,
+                    );
+                    $this->session->set_userdata($data);
+                    echo 1;
+                }
+            }
+
+
 
         }
 
@@ -151,6 +170,14 @@ class User extends CI_Controller {
     }
     public function save_update_profile()
     {
+        $con['upload_path']          = FCPATH.'upload/images/users';
+        $con['allowed_types']        = 'gif|jpg|png';
+        $con['max_size']             = 100;
+//        $con['max_width']            = 1024;
+//        $con['max_height']           = 768;
+        $con['file_name'] = sha1($this->input->post('email').time());
+        $this->upload->initialize($con);
+
         $original_value = $this->session->userdata("email");
         if($this->input->post('email') != $original_value) {
             $is_unique =  '|is_unique[users.EMAIL]';
@@ -209,21 +236,30 @@ class User extends CI_Controller {
             echo validation_errors();
         } else {
 
-            $data['users'] = $this->user->update();
+            if ( ! $this->upload->do_upload('picture'))
+            {
+                echo $this->upload->display_errors();
 
-            if (count($data['users']) > 0) {
-                $data = array(
-                    'firstname' => $data['users']->FirstName,
-                    'lastname' => $data['users']->LastName,
-                    'username' => $this->session->userdata('username'),
-                    'email' => $data['users']->Email,
-                    'id' => $this->session->userdata('id'),
-                    'loggedIn' => true,
-                );
-                $this->session->set_userdata($data);
-                echo 1;
             }
+            else {
 
+                $data['users'] = $this->user->update();
+
+                if (count($data['users']) > 0) {
+                    $data = array(
+                        'firstname' => $data['users']->FirstName,
+                        'lastname' => $data['users']->LastName,
+                        'username' => $this->session->userdata('username'),
+                        'email' => $data['users']->Email,
+                        'id' => $this->session->userdata('id'),
+                        'picture' => $data['users']->Picture,
+
+                        'loggedIn' => true,
+                    );
+                    $this->session->set_userdata($data);
+                    echo 1;
+                }
+            }
 
         }
     }

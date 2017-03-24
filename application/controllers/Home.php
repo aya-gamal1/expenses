@@ -17,7 +17,7 @@ class Home extends CI_Controller
             $income=$this->income->findAll();
             $outcome=$this->outcome->findAll();
 
-            var_dump($income);
+
             $this->load->view('main',array("view_name"=>"home","page_title"=>"Home Page",'incomes'=>$income,'outcomes'=>$outcome));
         }else{
             redirect('welcome');

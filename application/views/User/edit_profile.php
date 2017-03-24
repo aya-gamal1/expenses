@@ -28,20 +28,7 @@
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Change Photo <span class="required">*</span>
                                     </label>
-                                <div class="profile_img">
-
-                                    <!-- end of image cropping -->
-                                    <div id="crop-avatar">
-                                        <!-- Current avatar -->
-                                        <div class="avatar-view" >
-                                            <img src="<?php echo base_url("upload/images/picture.jpg")?>" alt="Avatar">
-                                        </div>
-
-
-
-                                    </div>
-
-                                </div>
+                              <input type="file" name="picture" >
                                 </div>
 
                                 <div class="item form-group">

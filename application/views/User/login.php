@@ -40,7 +40,7 @@
         </div>
         <div id="register" class="animate form">
             <section class="login_content">
-                <form id="create_account" method="POST" enctype="multipart/form-data" novalidate>
+                <form id="create_account" method="POST"  enctype="multipart/form-data" novalidate>
                     <h1>Create Account</h1>
                     <div id="error" class="alert alert-danger avater-alert" style="display:none;" ></div>
                     <div>
@@ -117,6 +117,7 @@
 <script type="text/javascript" src="<?php echo base_url("upload/js/datepicker/daterangepicker.js") ?>"></script>
 <script src="<?php echo base_url("upload/js/select/select2.full.js")?>"></script>
 <script src="<?php echo base_url("upload/js/validator/validator.js");?>"></script>
+
 
 
 <script>

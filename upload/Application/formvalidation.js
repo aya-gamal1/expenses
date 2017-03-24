@@ -35,7 +35,9 @@ $(document).ready(function() {
         $.ajax({
             url: URLTEXT,
             type: 'post',
-            data: $("form").serialize(),
+            data : new FormData($('form')[0]),
+            processData: false,
+            contentType: false,
             success: function (data, textStatus, jQxhr) {
 
                 if (data == 1) {

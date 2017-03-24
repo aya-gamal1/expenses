@@ -26,7 +26,7 @@
                                 <div id="crop-avatar">
                                     <!-- Current avatar -->
                                     <div class="avatar-view" >
-                                        <img src="<?php echo base_url("upload/images/picture.jpg")?>" alt="Avatar">
+                                        <img src="<?php echo base_url("upload/images/users/".$users[0]['Picture'])?>" alt="Avatar">
                                     </div>
 
 

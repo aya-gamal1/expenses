@@ -26,6 +26,7 @@ class User_model extends CI_Model {
         $this->BirthDate     = $this->input->post('birthdate');
         $this->Password     = sha1($this->input->post('password'));
         $this->JobId     = $this->input->post('JobId');
+        $this->Picture =sha1($this->input->post('username').time()).$this->upload->data()['file_ext'];
 
         $this->db->insert('users', $this);
         $this->Id = $this->db->insert_id();
@@ -48,6 +49,7 @@ class User_model extends CI_Model {
         $this->BirthDate     = $this->input->post('birthdate');
         $this->Password     = sha1($this->input->post('password'));
         $this->JobId     = $this->input->post('JobId');
+        $this->Picture     = $this->upload->data()['file_name'];
 
         $this->db->where('id', $this->session->userdata('id'));
         $this->db->update('users', $this);

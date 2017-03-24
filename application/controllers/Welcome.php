@@ -30,8 +30,27 @@ class Welcome extends CI_Controller {
 
 	public function welcome_message()
 	{
-		$this->load->view('main',array('view_name'=>'User/demo'));
+//		var_dump(FCPATH.'/upload/images/users');
+		$config['upload_path']          = FCPATH.'upload/images/users';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 100;
+//		$config['max_width']            = 1024;
+//		$config['max_height']           = 768;
 
+		$this->upload->initialize($config);
+
+		if ( ! $this->upload->do_upload('userfile'))
+		{
+			echo $this->upload->display_errors();
+
+//			$this->load->view('User/demo', $error);
+		}
+		else
+		{
+			echo "done";
+//echo $data;
+			//$this->load->view('User/login', $data);
+		}
 
 	}
 	public function demo()

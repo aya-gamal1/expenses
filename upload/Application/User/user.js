@@ -49,7 +49,9 @@ $(document).ready(function() {
         $.ajax({
             url: registerUrl,
             type: 'post',
-            data: data,
+            data : new FormData($('#create_account')[0]),
+            processData: false,
+            contentType: false,
             success: function (data, textStatus, jQxhr) {
 
                 if (data == 1) {
