@@ -1,11 +1,11 @@
 <?php
-class Jobs_model extends CI_Model {
+class Incomecategories_model extends CI_Model {
 
 
-    private  $table = 'jobs';
+    private  $table = 'income_categories';
     var $column_order = array(null,'Name'); //set column field database for datatable orderable
     var $column_search = array('Id','Name'); //set column field database for datatable searchable
-    var $order = array('jobs.id' => 'asc'); // default order
+    var $order = array('income_categories.id' => 'asc'); // default order
 
     public function __construct()
     {
@@ -15,7 +15,7 @@ class Jobs_model extends CI_Model {
     public function insert()
     {
         $this->Name    = $this->input->post('name');
-       echo  $this->db->insert('jobs', $this);
+        echo  $this->db->insert('income_categories', $this);
 
     }
     public function update()
@@ -23,7 +23,7 @@ class Jobs_model extends CI_Model {
         $this->Name    = $this->input->post('name');
         $this->db->set('Name',  $this->Name );
         $this->db->where('id', $this->input->post('id'));
-        echo  $this->db->update('jobs');
+        return  $this->db->update('income_categories');
 
     }
 

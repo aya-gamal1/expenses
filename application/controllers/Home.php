@@ -5,6 +5,8 @@ class Home extends CI_Controller
 {
     public function __construct(){
         parent::__construct();
+        $this->load->model('Income_model', 'income', True);
+        $this->load->model('Outcome_model', 'outcome', True);
 
 
     }
@@ -12,7 +14,11 @@ class Home extends CI_Controller
     public function index()
     {
         if(username()){
-            $this->load->view('main',array("view_name"=>"home","page_title"=>"Home Page"));
+            $income=$this->income->findAll();
+            $outcome=$this->outcome->findAll();
+
+            var_dump($income);
+            $this->load->view('main',array("view_name"=>"home","page_title"=>"Home Page",'incomes'=>$income,'outcomes'=>$outcome));
         }else{
             redirect('welcome');
         }

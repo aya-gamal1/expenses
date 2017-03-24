@@ -57,6 +57,50 @@ class IncomeReport extends CI_Controller
 
         }
     }
+    public function find(){
+
+        echo  json_encode($this->income->find())    ;
+
+    }
+
+    public function update()
+    {
+        $config = array(
+            array(
+                'field' => 'moneyAmount',
+                'label' => 'money amount',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'categoryId',
+                'label' => 'Category',
+                'rules' => 'required',
+
+            ),
+            array(
+                'field' => 'description',
+                'label' => 'Description',
+                'rules' => 'required|min_length[10]'
+            ),
+            array(
+                'field' => 'date',
+                'label' => 'Date',
+                'rules' => 'required'
+            )
+        );
+        $this->form_validation->set_rules($config);
+
+        if ($this->form_validation->run() == FALSE) {
+
+            echo validation_errors();
+        } else {
+
+            echo  $this->income->update();
+
+
+        }
+    }
+
 
     public function get_income_charts(){
         $this->load->view('main',array("view_name"=>"Report/income_charts","page_title"=>"Income(charts)"));
@@ -83,10 +127,12 @@ class IncomeReport extends CI_Controller
             $no++;
             $row = array();
 
-            $row[] = $customers->Id;
+
             $row[] = $customers->Date;
             $row[] = $customers->MoneyAmount;
             $row[] = $customers->Name;
+            $row[] = "<button id='incomeCategory_".$customers->incomeId."'class='btn btn-info ' data-id='".$customers->incomeId."' data-toggle='modal'  data-target='#generalModal'>Edit</button>";
+
 
 
             $data[] = $row;
@@ -101,6 +147,8 @@ class IncomeReport extends CI_Controller
         //output to json format
         echo json_encode($output);
     }
+
+
 
 
 

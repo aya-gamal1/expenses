@@ -3,9 +3,9 @@ class Income_model extends CI_Model {
 
 
     private $table = 'income';
-    var $column_order = array(null,'Date','MoneyAmount','Name'); //set column field database for datatable orderable
-    var $column_search = array('income.Id','Date','MoneyAmount','Name'); //set column field database for datatable searchable
-    var $order = array('income.id' => 'asc'); // default order
+    private $column_order = array(null,'Date','MoneyAmount','Name'); //set column field database for datatable orderable
+    private $column_search = array('income.Id','Date','MoneyAmount','Name'); //set column field database for datatable searchable
+    private $order = array('income.id' => 'asc'); // default order
 
     public function __construct()
     {
@@ -25,10 +25,41 @@ class Income_model extends CI_Model {
 
 
     }
+    public function update()
+    {
+        $this->db->set('MoneyAmount',  $this->input->post('moneyAmount') );
+        $this->db->set('categoryId',  $this->input->post('categoryId') );
+        $this->db->set('Date',  $this->input->post('date') );
+        $this->db->set('Description',  $this->input->post('description') );
+        $this->db->where('Id', $this->input->post('Id'));
+        return  $this->db->update('income');
+    }
+    public function find(){
+
+        $this->db->from($this->table);
+        $this->db->where('income.UserId=' , $this->session->userdata("id"));
+        $this->db->where('income.Id=' , $this->input->post('id'));
+        $this->db->join('income_categories', 'income.CategoryId = income_categories.Id');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function findAll(){
+
+        $this->db->from($this->table);
+        $this->db->where('income.UserId=' , $this->session->userdata("id"));
+        $this->db->join('income_categories', 'income.CategoryId = income_categories.Id');
+        $this->db->order_by("Date", "desc");
+        $this->db->limit(6);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     private function _get_datatables_query()
     {
-
+        $this->db->select('income.Id as `incomeId`,Date,MoneyAmount,Description,Name');
         $this->db->from($this->table);
         $this->db->where('income.UserId=' , $this->session->userdata("id"));
         $this->db->join('income_categories', 'income.CategoryId = income_categories.Id');

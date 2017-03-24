@@ -1,18 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Job extends CI_Controller
+class OutcomeCategory extends CI_Controller
 {
     public function __construct(){
         parent::__construct();
 
-        $this->load->model('Jobs_model', 'job', True);
+        $this->load->model('OutcomeCategories_model', 'outcome_category', True);
 
     }
 
     public function index()
     {
-        $list = $this->job->get_datatables();
+        $list = $this->outcome_category->get_datatables();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $customers) {
@@ -21,13 +21,13 @@ class Job extends CI_Controller
 
             $row[] = $customers->Id;
             $row[] = $customers->Name;
-            $row[] = "<button id='job_".$customers->Id."'class='btn btn-info job' data-toggle='modal' data-name='".$customers->Name."'  data-id='".$customers->Id."' data-target='#generalModal'>Edit</button>";
+            $row[] = "<button id='outcomeCategory_".$customers->Id."'class='btn btn-info job' data-toggle='modal' data-name='".$customers->Name."'  data-id='".$customers->Id."' data-target='#generalModal'>Edit</button>";
             $data[] = $row;
         }
         $output = array(
             "draw" => $_POST['draw'],
-            "recordsTotal" => $this->job->count_all(),
-            "recordsFiltered" => $this->job->count_filtered(),
+            "recordsTotal" => $this->outcome_category->count_all(),
+            "recordsFiltered" => $this->outcome_category->count_filtered(),
             "data" => $data,
         );
         //output to json format
@@ -45,11 +45,14 @@ class Job extends CI_Controller
                 'rules' => 'required'
             ),
         );
+
         $this->form_validation->set_rules($config);
         if ($this->form_validation->run() == FALSE) {
+
             echo validation_errors();
         } else {
-            echo  $this->job->insert();
+
+            echo  $this->outcome_category->insert();
         }
     }
 
@@ -65,7 +68,7 @@ class Job extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             echo validation_errors();
         } else {
-            echo  $this->job->update();
+            echo  $this->outcome_category->update();
         }
 
 

@@ -34,4 +34,10 @@ class Welcome extends CI_Controller {
 
 
 	}
+	public function demo()
+	{
+		$this->load->view('main',array('view_name'=>'User/demo'));
+
+
+	}
 }
